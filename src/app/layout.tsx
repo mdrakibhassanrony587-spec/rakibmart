@@ -1,16 +1,26 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rakib Mart",
-  description: "Rakib Mart storefront and admin panel powered by Next.js and PostgreSQL.",
+  title: "RakibMart - Your Ultimate Shopping Destination",
+  description: "Professional E-commerce website with Admin Panel",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className="bg-slate-100 text-slate-900 antialiased">{children}</body>
+      <body className={inter.className}>
+        {children}
+        <Toaster position="bottom-right" />
+      </body>
     </html>
   );
 }
