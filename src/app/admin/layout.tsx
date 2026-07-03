@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Package, LayoutDashboard, ShoppingCart, Tags, LogOut } from 'lucide-react';
 import { ReactNode } from 'react';
+import { ensureDatabaseSetup } from '@/db/setup';
 
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export default async function AdminLayout({ children }: { children: ReactNode }) {
+  await ensureDatabaseSetup();
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
